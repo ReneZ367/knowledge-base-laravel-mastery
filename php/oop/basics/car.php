@@ -2,51 +2,53 @@
 
 namespace KnowledgeBase\Php\Oop;
 
-class Car {
+class Car
+{
     private static int $count = 0;
 
     public function __construct(
         public readonly string $model,
         public string $color,
-        private int $speed)
-    { 
+        protected int $speed
+    ) {
         self::$count++;
     }
 
-    public function displayInfo() : void
+    public function displayInfo(): void
     {
         $speed = $this->getSpeed();
         echo "The {$this->model} in the color {$this->color} has a speed of {$speed}\n";
     }
 
-    public function getSpeed() : int 
+    public function getSpeed(): int
     {
         return $this->speed;
     }
 
-    public static function getCount() : void 
+    public static function getCount(): void
     {
         echo static::$count . " instances were created.\n\n";
     }
 }
 
-class ElectricCar extends Car {
+class ElectricCar extends Car
+{
 
     public function __construct(
         string $model,
         string $color,
         int $speed,
-        private float $batteryCapacity)
-    {
+        private float $batteryCapacity
+    ) {
         parent::__construct($model, $color, $speed);
     }
 
-    public function displayBatteryInfo() : void 
+    public function displayBatteryInfo(): void
     {
         echo "Your {$this->model} has {$this->batteryCapacity}% battery capacity.\n";
     }
 
-    public function chargeBattery() : void 
+    public function chargeBattery(): void
     {
         $this->batteryCapacity = 100.0;
     }
