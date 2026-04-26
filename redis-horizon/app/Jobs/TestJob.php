@@ -27,6 +27,14 @@ class TestJob implements ShouldQueue
     public function handle(): void
     {
         sleep(2);
-        Log::info('Job completed for User ID: ' . $this->user->id);
+        //Log::info('Job completed for User ID: ' . $this->user->id);
+
+        // demostrating failed jobs in horizon
+        //throw new \Exception('Test exception: there was an error');
+    }
+
+    public function tags(): array
+    {
+        return ['TestJob', 'User:' . $this->user->id];
     }
 }
