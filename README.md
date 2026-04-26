@@ -8,6 +8,7 @@ My personal deep-dive into the Laravel ecosystem. A collection of experiments, a
 laravel-mastery/
 ├── README.md
 ├── redis/ # coming soon
+├── redis-horizon/
 ├── eloquent/
 │   └── eloquent-relationships/ # coming soon
 ├── php/
