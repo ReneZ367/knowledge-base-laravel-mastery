@@ -11,7 +11,9 @@ laravel-mastery/
 ├── eloquent/
 │   └── eloquent-relationships/ # coming soon
 ├── php/
-│   ├── algorithms/bubblesort/
+│   ├── algorithms/
+│   │   ├── binarysearch.php
+│   │   └── bubblesort.php
 │   └── oop/basics/
 │       ├── car.php
 │       └── trait-interface-abstract/ # coming soon
