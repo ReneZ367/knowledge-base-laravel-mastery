@@ -1,0 +1,13 @@
+{
+  "name": "laravel-mastery/trait-interface-abstract",
+  "description": "OOP learning: traits, interfaces, abstract classes",
+  "type": "project",
+  "require": {
+    "php": ">=8.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "OopBasics\\TraitInterfaceAbstract\\": "src/"
+    }
+  }
+}
