@@ -14,7 +14,8 @@ laravel-mastery/
 ├── php/
 │   ├── algorithms/
 │   │   ├── binarysearch.php
-│   │   └── bubblesort.php
+│   │   ├── bubblesort.php
+│   │   └── selection-sort.php
 │   └── oop/
 │       ├── car.php
 │       └── trait-interface-abstract/
