@@ -27,18 +27,14 @@ The script constructs a few event instances and exercises `buyTicket()`, `bookSe
 
 ## Layout
 
-| Path | Role |
-|------|------|
-| `src/Event/Event.php` | Abstract base: ticket purchase flow, composes pricing and menu traits |
-| `src/Event/SeatedEvent.php` | Abstract seated events: binds `HasSeats` + `SeatingContract` in one place |
-| `src/Event/Concert.php`, `Play.php`, `Movie.php` | Concrete events; plays and movies extend `SeatedEvent` |
-| `src/Contracts/` | `PricingContract`, `SeatingContract` capability interfaces |
-| `src/Traits/` | `HasTicketPrice`, `HasMenu`, `HasSeats` shared behavior |
-| `src/Enums/` | `MenuItem` (string-backed), `SeatStatus` (unit enum) |
-| `notes.md` | Short personal notes on traits vs abstract classes |
+| Path                                             | Role                                                                      |
+| ------------------------------------------------ | ------------------------------------------------------------------------- |
+| `src/Event/Event.php`                            | Abstract base: ticket purchase flow, composes pricing and menu traits     |
+| `src/Event/SeatedEvent.php`                      | Abstract seated events: binds `HasSeats` + `SeatingContract` in one place |
+| `src/Event/Concert.php`, `Play.php`, `Movie.php` | Concrete events; plays and movies extend `SeatedEvent`                    |
+| `src/Contracts/`                                 | `PricingContract`, `SeatingContract` capability interfaces                |
+| `src/Traits/`                                    | `HasTicketPrice`, `HasMenu`, `HasSeats` shared behavior                   |
+| `src/Enums/`                                     | `MenuItem` (string-backed), `SeatStatus` (unit enum)                      |
+| `notes.md`                                       | Short personal notes on traits vs abstract classes                        |
 
 Namespace root: `OopBasics\TraitInterfaceAbstract\`.
-
-## Design in one sentence
-
-The abstract `Event` centralizes what every event does; traits supply reusable chunks of behavior; `SeatedEvent` ties `HasSeats` to `SeatingContract` so seated types do not repeat that pairing; `PricingContract` stays on the ticket flow, so the model stays explicit without deep inheritance trees.

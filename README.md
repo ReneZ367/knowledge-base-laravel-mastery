@@ -17,7 +17,7 @@ laravel-mastery/
 │   │   └── bubblesort.php
 │   └── oop/
 │       ├── car.php
-│       └── trait-interface-abstract/ # coming soon
+│       └── trait-interface-abstract/
 ├── sql/
 │   ├── README.md
 │   ├── .ddev/
