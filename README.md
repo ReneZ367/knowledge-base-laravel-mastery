@@ -9,6 +9,7 @@ laravel-mastery/
 ├── README.md
 ├── redis/ # coming soon
 ├── redis-horizon/
+├── filament-livewire/
 ├── eloquent/
 │   └── eloquent-relationships/ # coming soon
 ├── php/
@@ -25,7 +26,6 @@ laravel-mastery/
 │   └── sakila-db/
 ├── tutorials/
 │   └── laracasts-from-scratch-2026/
-└── local/
 ```
 
 Nested Laravel apps and the SQL workspace each carry their own README where setup differs from the repo root.
