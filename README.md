@@ -2,7 +2,9 @@
 
 My personal deep-dive into the Laravel ecosystem. A collection of experiments, architectural sketches, and learnings on my path to framework mastery.
 
-## Layout(overview)
+Beyond structured study, these subprojects also function as a **personal reference**: working examples, configurations, and patterns I revisit when I need a concise reminder in day-to-day development (in other words, a curated cheat sheet tied to real code, not isolated snippets).
+
+## Layout (overview)
 
 ```
 laravel-mastery/
