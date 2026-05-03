@@ -15,8 +15,10 @@ class FeaturesTable
     {
         return $table
             ->columns([
-                TextColumn::make('name')
-                    ->searchable(),
+                TextColumn::make('name'),
+                // could set it false for this specific column
+                //->searchable(),
+                //->sortable(false), 
                 TextColumn::make('status')
                     ->badge()
                     ->sortable()
