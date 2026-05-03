@@ -36,6 +36,7 @@ class SecretAdminPanelProvider extends PanelProvider
             ->emailVerification()
             ->emailChangeVerification()
             ->login()
+            ->strictAuthorization()
             ->brandLogo(asset('images/logo_dark.png'))
             ->darkModeBrandLogo(asset('images/logo_white.png'))
             ->brandLogoHeight('2.5rem')
