@@ -28,7 +28,7 @@ class SecretAdminPanelProvider extends PanelProvider
             ->default()
             ->id('secret-admin')
             ->path('secret-admin')
-            ->unsavedChangesAlerts()
+            ->unsavedChangesAlerts(fn() => app()->isProduction())
             ->databaseTransactions()
             // ->registration()
             ->passwordReset()

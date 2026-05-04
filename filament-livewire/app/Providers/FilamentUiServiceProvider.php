@@ -114,5 +114,17 @@ class FilamentUiServiceProvider extends ServiceProvider
                 ->defaultDateTimeDisplayFormat('h:i A')
                 ->defaultTimeDisplayFormat('m/d/Y h:i A');
         });
+
+        \Filament\Forms\Components\RichEditor::configureUsing(function (\Filament\Forms\Components\RichEditor $richEditor) {
+            return $richEditor
+                ->toolbarButtons([
+                    ['bold', 'italic', 'underline', 'strike', 'subscript', 'superscript', 'link'],
+                    ['h2', 'h3'],
+                    ['alignStart', 'alignCenter', 'alignEnd'],
+                    ['blockquote', 'codeBlock', 'bulletList', 'orderedList'],
+                    //['table', 'attachFiles'], // The `customBlocks` and `mergeTags` tools are also added here if those features are used.
+                    //['undo', 'redo'],
+                ]);
+        });
     }
 }
