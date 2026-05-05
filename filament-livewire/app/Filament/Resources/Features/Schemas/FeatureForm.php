@@ -6,13 +6,14 @@ use App\Enums\Feature\FeatureStatus;
 use App\Enums\FeatureType;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\DateTimePicker;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Textarea;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\ToggleButtons;
-use Filament\Forms\Components\Slider;
 use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Slider;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\ToggleButtons;
+use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Schema;
+use Illuminate\Validation\Rule;
 
 class FeatureForm
 {
@@ -28,6 +29,19 @@ class FeatureForm
                     ->searchable()
                     ->required()
                     ->default(FeatureStatus::Proposed->value),
+                DatePicker::make('target_delivery_date')
+                    ->rules([
+                        function (Get $get) {
+                            return Rule::requiredIf($get('status') === FeatureStatus::Planned
+                                || $get('status') === FeatureStatus::InProgress);
+                        },
+                    ])
+                    // using JS instead of livewire because livewire needs a network call to the server to get the value of the status field
+                    ->visibleJs(
+                        <<<'JS'
+                    $get('status') === 'Planned' || $get('status') === 'In Progress'
+                JS
+                    ),
                 ToggleButtons::make('type')
                     ->hiddenLabel()
                     ->options(FeatureType::class)
@@ -55,7 +69,6 @@ class FeatureForm
                     ->numeric()
                     ->default(0)
                     ->prefix('$'),
-                DatePicker::make('target_delivery_date'),
                 DateTimePicker::make('delivered_at'),
             ]);
     }
