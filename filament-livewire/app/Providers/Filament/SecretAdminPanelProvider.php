@@ -28,6 +28,7 @@ class SecretAdminPanelProvider extends PanelProvider
             ->default()
             ->id('secret-admin')
             ->path('secret-admin')
+            ->viteTheme('resources/css/filament/secret-admin/theme.css')
             ->unsavedChangesAlerts(fn() => app()->isProduction())
             ->databaseTransactions()
             // ->registration()
