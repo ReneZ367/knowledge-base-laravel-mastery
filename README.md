@@ -11,7 +11,7 @@ laravel-mastery/
 ├── README.md
 ├── redis/ # coming soon
 ├── redis-horizon/
-├── filament-livewire/
+├── filament/
 ├── eloquent/
 │   └── eloquent-relationships/ # coming soon
 ├── php/
