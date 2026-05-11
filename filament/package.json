@@ -1,5 +1,5 @@
 {
-    "name": "filament-livewire",
+    "name": "filament",
     "$schema": "https://www.schemastore.org/package.json",
     "private": true,
     "type": "module",
