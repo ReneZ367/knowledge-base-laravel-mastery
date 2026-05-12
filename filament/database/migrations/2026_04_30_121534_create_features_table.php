@@ -1,11 +1,10 @@
 <?php
 
 use App\Enums\Feature\FeatureStatus;
-use App\Enums\FeatureType;
+use App\Enums\Feature\FeatureType;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use PHPUnit\Logging\OpenTestReporting\Status;
 
 return new class extends Migration
 {
@@ -20,6 +19,7 @@ return new class extends Migration
             $table->string('status')->default(FeatureStatus::Proposed->value);
             $table->string('type')->default(FeatureType::Feature->value);
             $table->text('description');
+            // $table->json('milestones')->nullable();
             $table->smallInteger('effort_in_days')->unsigned()->default(0);
             $table->smallInteger('priority')->unsigned()->default(0);
             $table->decimal('cost', 10, 2)->default(0.00);

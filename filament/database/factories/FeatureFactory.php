@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use App\Enums\Feature\FeatureStatus;
-use App\Enums\FeatureType;
+use App\Enums\Feature\FeatureType;
 use App\Models\Feature;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -19,6 +19,7 @@ class FeatureFactory extends Factory
             'status' => $this->faker->randomElement(FeatureStatus::cases()),
             'type' => $this->faker->randomElement(FeatureType::cases()),
             'description' => $this->faker->paragraph(),
+            // 'milestones' => null,
             'effort_in_days' => $this->faker->numberBetween(1, 300),
             'priority' => $this->faker->numberBetween(1, 10),
             'cost' => $this->faker->randomFloat(2, 2000, 200000),

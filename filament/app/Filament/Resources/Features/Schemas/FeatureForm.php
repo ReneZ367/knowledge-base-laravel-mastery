@@ -6,6 +6,7 @@ use App\Enums\Feature\FeatureStatus;
 use App\Enums\Feature\FeatureType;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\DateTimePicker;
+use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Slider;
@@ -15,6 +16,7 @@ use Filament\Forms\Components\ToggleButtons;
 use Filament\Schemas\Components\Tabs;
 use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Schema;
+use Filament\Tables\Columns\Column;
 use Illuminate\Validation\Rule;
 
 class FeatureForm
@@ -33,6 +35,9 @@ class FeatureForm
                         Tabs\Tab::make('Effort and Cost')
                             ->columns(2)
                             ->schema(self::getEffortAndCostTabSchema()),
+                        Tabs\Tab::make('Milestones')
+                            ->columns(1)
+                            ->schema(self::getMilestonesTabSchema()),
                     ]),
             ]);
     }
@@ -51,7 +56,7 @@ class FeatureForm
             Slider::make('priority')
                 ->required()
                 ->extraFieldWrapperAttributes([
-                    'class' => 'pl-3',
+                    'class' => 'pl-3'
                 ])
                 ->minValue(1)
                 ->maxValue(10)
@@ -70,7 +75,7 @@ class FeatureForm
                 ->rules([
                     function (Get $get) {
                         return Rule::requiredIf($get('status') === FeatureStatus::Planned || $get('status') === FeatureStatus::InProgress);
-                    },
+                    }
                 ])
                 ->visibleJs(
                     <<<'JS'
@@ -127,6 +132,34 @@ class FeatureForm
                         $set('cost', effort * costPerDay);
                         JS
                 ),
+        ];
+    }
+
+    private static function getMilestonesTabSchema(): array
+    {
+        return [
+            Repeater::make('milestones')
+                ->label('Milestones')
+                ->relationship('milestones')
+                ->compact()
+                ->nullable()
+                ->columns(3)
+                ->minItems(0)
+                ->maxItems(3)
+                ->table([
+                    Repeater\TableColumn::make('Name*'),
+                    Repeater\TableColumn::make('Due Date'),
+                    Repeater\TableColumn::make('Is Completed'),
+                ])
+                ->schema([
+                    TextInput::make('name')
+                        ->required(),
+                    DatePicker::make('due_date')
+                        ->required(),
+                    Toggle::make('is_completed')
+                        ->label('Completed')
+                        ->default(false),
+                ]),
         ];
     }
 }

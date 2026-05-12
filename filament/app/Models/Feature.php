@@ -6,6 +6,7 @@ use App\Enums\Feature\FeatureStatus;
 use Database\Factories\FeatureFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Feature extends Model
 {
@@ -16,6 +17,12 @@ class Feature extends Model
     {
         return [
             'status' => FeatureStatus::class,
+            // 'milestones' => 'array',
         ];
+    }
+
+    public function milestones(): HasMany
+    {
+        return $this->hasMany(Milestone::class);
     }
 }
