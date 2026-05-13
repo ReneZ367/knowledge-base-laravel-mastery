@@ -11,6 +11,8 @@ use App\Filament\Resources\Features\Schemas\FeatureInfolist;
 use App\Filament\Resources\Features\Tables\FeaturesTable;
 use App\Models\Feature;
 use BackedEnum;
+use App\Filament\Resources\Features\RelationManagers\CommentsRelationManager;
+use App\Filament\Resources\Features\RelationManagers\VotesRelationManager;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -20,7 +22,9 @@ class FeatureResource extends Resource
 {
     protected static ?string $model = Feature::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static ?int $navigationSort = 1;
+
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedStar;
 
     protected static ?string $recordTitleAttribute = 'name';
 
@@ -42,7 +46,8 @@ class FeatureResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            CommentsRelationManager::class,
+            VotesRelationManager::class,
         ];
     }
 
